@@ -283,3 +283,44 @@ const List = () => {
    )
 };
 ```
+
+## Props
+
+Props are used for one-way communication to different components.
+
+- Parent(Container) component sends data in the form of props.
+- The child component can use that data via props
+
+**Pass props to the child component**
+
+```
+const Gallery = () => {
+   return (
+      <Profile
+         person={{name: "Rohit Sharma", imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS25uhv3LIGyCcgSljUsZiFB_t9B_HjZ13kIg&s"}},
+         size={100}
+      />
+   );
+}
+```
+
+**Read props inside the child component**
+
+```
+const Profile = ({person, size}) => {
+   // Now we can access person and size props here...
+};
+```
+
+## Props with Children
+
+Passing components as props to components
+
+- A component can send JSX as Props and a Children can use it.
+- You can have a layout structure with it.
+
+```
+Syntax:-
+
+<Child><div> I'm nested child </div> </Child>
+```
