@@ -69,6 +69,7 @@ document.getElementById('root').appendChild(heading);
 - Components
 - JSX
 - Adding JavaScript Expressions
+- List Rendering
 - Props
 - Events
 - State
@@ -77,7 +78,6 @@ document.getElementById('root').appendChild(heading);
   - useEffect
   - useContext
 - Form Handling
-- List Rendering
 
 ## Components
 
@@ -224,4 +224,62 @@ const TaskCounter = () => {
       </div>
    )
 }
+```
+
+## List Rendering
+
+You will often want to display multiple similar components from a collection of data. You can use the JavaScript array methods to manipulate an array of data.
+
+**Rendering Data From Array**
+
+```
+const people = [
+  'Rohit Sharma',
+  'Lionel Messi',
+  'Narendra Modi',
+  'Virat Kohli',
+];
+```
+
+```
+const List = () => {
+   return (
+      <div>
+         {people.map((item) => (
+            <div>
+               <h1>{item}</h1>
+            </div>
+         ))}
+      </div>
+   )
+};
+
+⚠️: Each child in a list should have a unique "key" prop.
+```
+
+You need to give each array item a key — a string or a number that uniquely identifies it among other items in that array:
+
+Keys tell React which array item each component corresponds to, so that it can match them up later. This becomes important if your array items can move (e.g. due to sorting), get inserted, or get deleted. A well-chosen key helps React infer what exactly has happened, and make the correct updates to the DOM tree.
+
+```
+const people = [
+  {id: 0, name: "Rohit Sharma"},
+  {id: 1, name: "Lionel Messi"},
+  {id: 2, name: "Narendra Modi"},
+  {id: 3, name: "Virat Kohli"},
+];
+```
+
+```
+const List = () => {
+   return (
+      <div>
+         {people.map((item) => (
+            <div key={item.id}>
+               <h1>{item.name}</h1>
+            </div>
+         ))}
+      </div>
+   )
+};
 ```
