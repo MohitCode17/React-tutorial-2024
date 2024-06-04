@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: blueviolet;
+  color: white;
+  padding: 20px;
+  font-family: "Karla", sans-serif;
+  font-size: 1.3rem;
+}
+
+button {
+  width: 100%;
+  background-color: transparent;
+  padding: 1rem;
+  color: white;
+  border: 2px solid white;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: "Karla", sans-serif;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+button:hover {
+  background-color: #fffef1;
+  color: blueviolet;
+}
+
+button:focus {
+  outline: 0;
+}
