@@ -324,3 +324,153 @@ Syntax:-
 
 <Child><div> I'm nested child </div> </Child>
 ```
+
+## Events
+
+Events are used for user interaction.
+
+- Events are subscribed and gets fired when specified user's interaction.
+- Can update anything
+
+```
+const App = () => {
+   return (
+      <button onclick={() => alert("Hyy Everyone !")}>Click me</button>
+   )
+}
+```
+
+## State in React
+
+The state represents data in a component.
+
+- Allows components to manage and store data that can change over time.
+- A crucial part of building dynamic web apps.
+
+**When regular variable isn't enough**
+
+Here’s a component that renders a count. Clicking the “+” and “-” button should increase the value of count by 1 and decrease the value of count by 1. However, this won’t work:
+
+```
+function App() {
+  let count = 0;
+
+  const decreaseCount = () => {
+    count = count - 1;
+    console.log(count);
+  };
+
+  const increaseCount = () => {
+    count = count + 1;
+    console.log(count);
+  };
+
+  console.log("Component re-rendered");
+  return (
+    <div>
+      <button onClick={decreaseCount}>-</button>
+      <div>
+        <h1>{count}</h1>
+      </div>
+      <button onClick={increaseCount}>+</button>
+    </div>
+  );
+}
+```
+
+The "decreaseCount" and "increaseCount" event handler is updating a local variable, count. But two things prevent that change from being visible:
+
+➡️ Local variables don’t persist between renders. When React renders this component a second time, it renders it from scratch—it doesn’t consider any changes to the local variables.
+
+➡️ Changes to local variables won’t trigger renders. React doesn’t realize it needs to render the component again with the new data.
+
+To update a component with new data, two things need to happen:
+
+1. Retain the data between renders.
+2. Trigger React to render the component with new data (re-rendering).
+
+The useState Hook provides those two things:
+
+1. A state variable to retain the data between renders.
+2. A state setter function to update the variable and trigger React to render the component again.
+
+Here is:
+
+- count: The current value of the state which is 0.
+- setCount: A function that allow you to change "state" variable.
+
+```
+function App() {
+  const [count, setCount] = useState(0);
+
+  const decreaseCount = () => {
+    setCount(count - 1);
+  };
+
+  const increaseCount = () => {
+    setCount(count + 1);
+  };
+
+  console.log("Component re-rendered");
+  return (
+    <div>
+      <button onClick={decreaseCount}>-</button>
+      <div>
+        <h1>{count}</h1>
+      </div>
+      <button onClick={increaseCount}>+</button>
+    </div>
+  );
+}
+```
+
+**Important Interview Question Related to State**
+
+```
+function App() {
+  const [count, setCount] = useState(0);
+
+  /*
+   when you call setCount multiple times in quick succession like in your increaseCount or decreaseCount function, React doesn't immediately update the state after each call. Instead, it batches state updates for performance reasons.
+
+   When you call setCount multiple times in a row with the same value of count, React optimizes and batches those state updates into a single update. So, even though you call setCount four times with count + 1, React will only perform one actual state update with the final incremented value.
+
+   To make sure each increment is counted properly, you can use the functional form of setState where the new state is based on the previous state.
+  */
+
+  const decreaseCount = () => {
+    // setCount(count - 1);
+
+    // setCount(count - 1);  // scheduled at count was 0
+    // setCount(count - 1);  // scheduled at count was 0
+    // setCount(count - 1);  // scheduled at count was 0
+
+    setCount((prev) => prev - 1);
+    setCount((prev) => prev - 1);
+    setCount((prev) => prev - 1);
+  };
+
+  const increaseCount = () => {
+    // setCount(count + 1);
+
+    // setCount(count + 1);  // scheduled at count was 0
+    // setCount(count + 1);  // scheduled at count was 0
+    // setCount(count + 1);  // scheduled at count was 0
+
+    setCount((prev) => prev - 1);
+    setCount((prev) => prev - 1);
+    setCount((prev) => prev - 1);
+  };
+
+  console.log("Component re-rendered");
+  return (
+    <div>
+      <button onClick={decreaseCount}>-</button>
+      <div>
+        <h1>{count}</h1>
+      </div>
+      <button onClick={increaseCount}>+</button>
+    </div>
+  );
+}
+```
