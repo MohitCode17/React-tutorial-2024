@@ -513,3 +513,63 @@ It update only those components where the state has changed.
 Both uses the internal Algorithm called The Reconcilliation.
 
 **The Reconcilliation**: Algorithm for changing DOM. Compares the new Virtual DOM tree with previous one and updates the state.
+
+## Hooks in React
+
+Hooks are special functions that help manage state and components efficiently.
+
+- Functions that helps us use React's features of handling state.
+- Introduced in React 16.8 which also helps us use lifecycle methods.
+- Helps in reusability, avoiding classes and easier code generation.
+
+Hooks are both predefined and can be created according to requirement.
+
+## useEffect Hook
+
+The useEffect Hook allows you to perform side effects in your components.
+
+**What exactly is an "effect" ?**
+
+The word effect refers to a functional programming term called a "side effect". But to really understand what a side effect is, we first have to grasp the concept of a pure function.
+
+You may not know this, most React components are intended to be pure functions. It may be strange to think about React components as functions, but they are.
+
+Most React components are pure functions, meaning they receive an input and produce a predictable output of JSX. The input to a JavaScript function is arguments. What is the input to a React component, however? Props!
+
+Here we have a User component that has the prop name declared on it. Within User, the prop value is displayed in a header element.
+
+```
+export default function App() {
+return <User name="John Doe" />
+}
+
+function User({name}) {
+return <h1>{name}</h1>; // John Doe
+}
+```
+
+This is pure because, given the same input, it will always return the same output. If we pass User a name prop with value "John Doe", our output will always be John Doe.
+
+Pure functions have the great benefit of being predictable, reliable, and easy to test. This is as compared to when we need to perform a side effect in our component.
+
+**What are side effects in React ?**
+
+Side effects are not predictable because they are actions which are performed with the "outside world."
+
+We perform a side effect when we need to reach outside of our React components to do something. Performing a side effect, however, will not give us a predictable result.
+
+Common side effects include:
+
+➡️ Making a request to an API for data from a backend server
+➡️ To interact with browser APIs (that is, to use document or window directly)
+➡️ Using unpredictable timing functions like setTimeout or setInterval
+
+This is why useEffect exists: to provide a way to handle performing these side effects in what are otherwise pure React components.
+
+**Cleanup function in useEffect**
+
+Imagine that you have a React component that displays a list of items from an API. Every time the component is rendered, it fetches the latest list of items from the API and displays them to the user.
+
+Let’s say the user decides to navigate away from this component to a different part of the app. The component is no longer being rendered, so there’s no need to continue fetching the list of items from the API. However, the fetch request is still ongoing in the background.
+
+This is where the useEffect cleanup function comes in. The cleanup function is a function that is called when the component is unmounted (i.e., when it is no longer being rendered). It allows you to perform any necessary cleanup tasks, such as cancelling an ongoing API request.
