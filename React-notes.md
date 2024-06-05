@@ -497,3 +497,19 @@ function App() {
   );
 }
 ```
+
+## Rendering Process of Components
+
+**The Rendering**: A process of generation visual representation of UI.
+
+Rendering usage the term called virtual DOM.
+
+**The Virtual DOM**: The copy of Real DOM, managed by react to identify updates.
+
+Updates the component to optimize state updates and performance.
+
+It update only those components where the state has changed.
+
+Both uses the internal Algorithm called The Reconcilliation.
+
+**The Reconcilliation**: Algorithm for changing DOM. Compares the new Virtual DOM tree with previous one and updates the state.
