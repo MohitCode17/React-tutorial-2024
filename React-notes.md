@@ -621,3 +621,12 @@ const Counter = () => {
   return <button onClick={handleClick}>Click me!</button>;
 };
 ```
+
+## useReducer Hook
+
+Used to manage complex state logic by dispatching actions.
+
+- Can handle complex state management logic.
+- Similar to Redux pattern.
+- Widely used for expensive calculations.
+- Identifies state update via dispatching actions and payload.
