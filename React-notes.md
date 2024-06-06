@@ -573,3 +573,51 @@ Imagine that you have a React component that displays a list of items from an AP
 Let’s say the user decides to navigate away from this component to a different part of the app. The component is no longer being rendered, so there’s no need to continue fetching the list of items from the API. However, the fetch request is still ongoing in the background.
 
 This is where the useEffect cleanup function comes in. The cleanup function is a function that is called when the component is unmounted (i.e., when it is no longer being rendered). It allows you to perform any necessary cleanup tasks, such as cancelling an ongoing API request.
+
+## useRef Hook
+
+Allows to access DOM without triggering re-render.
+
+- Used for communication with DOM properties.
+- An uncontrolled element by react
+- Have a current property which accesses DOM methods and properties.
+
+Here's an example:-
+
+```
+import { useState } from "react";
+
+const Counter = () => {
+  const [count, setCount] = useState(0);
+
+  const handleClick = () => {
+    setCount(count + 1);
+    console.log(`You clicked ${count} times`);
+  };
+
+  console.log("Component rendered");
+
+  return <button onClick={handleClick}>Click me!</button>;
+};
+```
+
+This component triggered re-rendering to `Counter` component as state update. Component re-rendering is tied to state updates by design.
+
+However, if you want to avoid re-renders when updating a piece of state, you can use a useRef instead of useState. useRef is primarily used for mutable values that do not cause re-renders when they change.
+
+```
+import { useRef } from "react";
+
+const Counter = () => {
+  const countRef = useRef(0);
+
+  const handleClick = () => {
+    countRef.current += 1;
+    console.log(`You clicked ${countRef.current} times`);
+  };
+
+  console.log("Component rendered");
+
+  return <button onClick={handleClick}>Click me!</button>;
+};
+```
