@@ -630,3 +630,9 @@ Used to manage complex state logic by dispatching actions.
 - Similar to Redux pattern.
 - Widely used for expensive calculations.
 - Identifies state update via dispatching actions and payload.
+
+## Context API
+
+Context API allows data to be passed through a component tree without having to pass props manually at every level.
+
+It solves props drilling , where props are sent to a deep of components. Prop drilling can make your code more difficult to read and maintain, and can also make it harder to refactor your components later on.
