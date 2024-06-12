@@ -1,0 +1,45 @@
+.header {
+  background: #0d0d0d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+  position: relative;
+}
+
+.taskForm {
+  position: absolute;
+  width: 100%;
+  height: 54px;
+  bottom: -27px;
+  max-width: 736px;
+  display: flex;
+  gap: 8px;
+  padding: 0 1rem;
+}
+
+.taskForm input {
+  height: 100%;
+  flex: 1;
+  background-color: #191919;
+  color: #f2f2f2;
+  border: 1px solid #0d0d0d;
+  outline: none;
+  padding: 0 1rem;
+  font-size: 16px;
+  border-radius: 7px;
+}
+
+.taskForm input:focus {
+  border: 1px solid #1e6f9f;
+}
+
+.taskForm button {
+  background-color: #1e6f9f;
+  height: 100%;
+  padding: 0 1rem;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
