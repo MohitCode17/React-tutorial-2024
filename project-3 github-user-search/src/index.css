@@ -3,3 +3,24 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+.light-mode {
+  background-color: #ffffeb;
+  color: black;
+  width: 100%;
+}
+
+.dark-mode {
+  background-color: #010004eb;
+  color: #f2f2f2;
+  width: 100%;
+}
+
+.dark-mode .search-input{
+  color: #f2f2f2;
+}
+
+.dark-mode .title {
+  color: #db1b7b;
+}
+
