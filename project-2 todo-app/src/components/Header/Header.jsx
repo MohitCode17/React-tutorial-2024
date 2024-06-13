@@ -12,7 +12,6 @@ const Header = ({ handleAddToTasks }) => {
     setTitle("");
   };
 
-  console.log(title);
   return (
     <div className={styles.header}>
       <img src="./images/todoLogo.svg" alt="todo" />

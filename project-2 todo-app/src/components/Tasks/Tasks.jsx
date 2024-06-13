@@ -2,17 +2,21 @@ import Task from "../Task/Task";
 import styles from "./task.module.css";
 
 const Tasks = ({ tasks, toggleTaskComplete, handleDeleteTask }) => {
+  const completedTask = tasks.filter((task) => task.isComplete).length;
+
   return (
     <div className={styles.tasks}>
       <header className={styles.header}>
         <div>
           <p>Created Tasks</p>
-          <span>5</span>
+          <span>{tasks.length}</span>
         </div>
 
         <div>
           <p>Completed</p>
-          <span>2 of 5</span>
+          <span>
+            {completedTask} of {tasks.length}
+          </span>
         </div>
       </header>
 
