@@ -1,15 +1,36 @@
 import Header from "./components/Header/Header";
 import Tasks from "./components/Tasks/Tasks";
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+const LOCAL_STORAGE_KEY = "tasks";
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
 
+  // SAVE TASKS IN LOCALSTORAGE
+  const setTasksAndSave = (newTasks) => {
+    setTasks(newTasks);
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newTasks));
+  };
+
+  // LOAD TASKS FROM LOCALSTORAGE
+  const loadSavedTasks = () => {
+    const savedTask = localStorage.getItem(LOCAL_STORAGE_KEY);
+    if (savedTask) {
+      setTasks(JSON.parse(savedTask));
+    }
+  };
+
+  useEffect(() => {
+    loadSavedTasks();
+  }, []);
+
   // ADD TO TASK
   const handleAddToTasks = (title) => {
-    setTasks((prev) => [
-      ...prev,
+    if (!title) return alert("Task content should not be empty.");
+    setTasksAndSave([
+      ...tasks,
       {
         id: crypto.randomUUID(),
         title: title,
@@ -30,13 +51,13 @@ const App = () => {
       return task;
     });
 
-    setTasks(newTasks);
+    setTasksAndSave(newTasks);
   };
 
   const handleDeleteTask = (taskId) => {
     const newTasks = tasks.filter((task) => task.id !== taskId);
 
-    setTasks(newTasks);
+    setTasksAndSave(newTasks);
   };
 
   return (
