@@ -1,5 +1,6 @@
 import "../styles/Header.css";
 import { useTheme } from "../context/index";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const theme = useTheme();
@@ -10,7 +11,9 @@ const Header = () => {
 
   return (
     <section className="header-container">
-      <h2 className="title">Logo.</h2>
+      <Link to={"/"} className="title">
+        Logo.
+      </Link>
       <button onClick={handleThemeChange} className="switch-theme">
         Switch 🌗
       </button>

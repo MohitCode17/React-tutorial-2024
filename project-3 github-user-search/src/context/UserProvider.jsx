@@ -16,7 +16,11 @@ export const UserProvider = ({ children }) => {
       const res = await fetch(`${BASE_URL}/${userId}`);
       const data = await res.json();
 
-      setUser(data);
+      if (data.login) {
+        setUser(data);
+      } else {
+        setUser(null);
+      }
     } catch (error) {
       console.log(`Error fetching users: ${error}`);
       setUser(null);

@@ -16,7 +16,12 @@ const SearchBar = () => {
 
   return (
     <div className="searchbar-container">
-      <input ref={inputRef} type="text" className="search-input" />
+      <input
+        ref={inputRef}
+        type="text"
+        className="search-input"
+        placeholder="Search github users..."
+      />
       <RiSearchLine
         size={24}
         className="search-icon"
