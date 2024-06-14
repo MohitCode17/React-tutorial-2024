@@ -30,6 +30,7 @@
 }
 
 .user-not-found {
+  margin-top: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,6 +46,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: palevioletred;
-  font-size: 30px;
+  color: hotpink;
+  font-size: 20px;
 }
