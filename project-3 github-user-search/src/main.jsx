@@ -12,6 +12,7 @@ import Home from "./pages/Home.jsx";
 import User from "./pages/User.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import { ThemeProvider } from "./context/ThemeProvider.jsx";
+import { UserProvider } from "./context/UserProvider.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,7 +27,9 @@ const router = createBrowserRouter(
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ThemeProvider>
-      <RouterProvider router={router} />
+      <UserProvider>
+        <RouterProvider router={router} />
+      </UserProvider>
     </ThemeProvider>
   </React.StrictMode>
 );

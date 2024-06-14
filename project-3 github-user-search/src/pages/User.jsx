@@ -1,7 +1,9 @@
-const User = () => {
-  return (
-    <div>User</div>
-  )
-}
+import { useGitHubUsers } from "../context";
 
-export default User
+const User = () => {
+  const { user } = useGitHubUsers();
+  console.log(user);
+  return <div>User</div>;
+};
+
+export default User;
