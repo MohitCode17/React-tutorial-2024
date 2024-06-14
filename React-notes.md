@@ -636,3 +636,44 @@ Used to manage complex state logic by dispatching actions.
 Context API allows data to be passed through a component tree without having to pass props manually at every level.
 
 It solves props drilling , where props are sent to a deep of components. Prop drilling can make your code more difficult to read and maintain, and can also make it harder to refactor your components later on.
+
+## The Redux
+
+A state management library.
+
+- Redux can help you manage complex state.
+- Can be used with any JavaScript Application.
+- It follows CDS pattern. A Central Data Store
+- Represents single source of truth.
+- Synchronously updates the state.
+
+Difference between React Context API and Redux
+
+<img src="https://miro.medium.com/v2/resize:fit:786/format:webp/1*nvjlFnZc9Wx7-AOsaGZiHg.png" width="500px">
+
+When to use React Context API vs Redux?
+The decision to use React Context API or Redux depends on the specific needs and complexity of your application.
+
+Use React Context API:
+
+1. Small to medium-sized applications
+
+2. Fewer levels of data sharing
+
+3. Component-specific state:
+
+Use Redux:
+
+1. Large and complex applications
+
+2. Deeply nested components
+
+3. Asynchronous data flow
+
+The Redux Terms
+
+- Actions: Actions are a way to describe what happened in an application.
+
+- Reducers: Logical functions to update the state based on actions.
+
+- Store: Hold entire state of application.

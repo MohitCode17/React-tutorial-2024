@@ -11,8 +11,10 @@ import Layout from "./Layout.jsx";
 import Home from "./pages/Home.jsx";
 import User from "./pages/User.jsx";
 import NotFound from "./pages/NotFound.jsx";
-import { ThemeProvider } from "./context/ThemeProvider.jsx";
 import { UserProvider } from "./context/UserProvider.jsx";
+
+import { Provider as ReduxProvider } from "react-redux";
+import store from "./store/store.js";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,10 +28,10 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <ThemeProvider>
+    <ReduxProvider store={store}>
       <UserProvider>
         <RouterProvider router={router} />
       </UserProvider>
-    </ThemeProvider>
+    </ReduxProvider>
   </React.StrictMode>
 );

@@ -1,12 +1,16 @@
-import "../styles/Header.css";
-import { useTheme } from "../context/index";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { themeActions } from "../store/theme-slice.js";
+import "../styles/Header.css";
 
 const Header = () => {
-  const theme = useTheme();
+  const theme = useSelector((state) => state.theme);
+  const dispatch = useDispatch();
+  // const theme = useTheme();
 
+  console.log(theme);
   const handleThemeChange = () => {
-    theme.toggleTheme();
+    dispatch(themeActions.toggleTheme());
   };
 
   return (
